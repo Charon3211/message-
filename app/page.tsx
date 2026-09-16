@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 type Person = {
   id: string;
@@ -8,7 +8,7 @@ type Person = {
   role: string;
   initials: string;
   location: string;
-  sent: string;
+
   message: string;
   accent: {
     avatar: string;
@@ -25,7 +25,7 @@ const people: Person[] = [
     role: "A friend you can count on",
     initials: "RY",
     location: "Always in your corner",
-    sent: "Today, 6:14 PM",
+
     message: `Hey Ryan, how are you doing?
 
 Listen, this message is for you because I genuinely want you to know how much I appreciate you as a friend. Thank you for always having my back and saving my ass whenever I needed it. And if you ever need help from me, no matter what it is, I’ll be there for you too.
@@ -47,7 +47,7 @@ Thank you so much for today, and thank you for making my birthday special. I gen
     role: "Friends who show up",
     initials: "K&N",
     location: "The people who care",
-    sent: "Today, 5:52 PM",
+
     message: `Hey Noshin, hey Khadiza. How are you guys?
 
 I just wanted to genuinely thank you both for today. Thank you so much for the surprise, and thank you, Noshin, for bringing me the gift. I really appreciate it.
@@ -67,7 +67,7 @@ Thank you for always being there for me, and Noshin, thank you for supporting me
     role: "Friends who inspire you",
     initials: "F&E",
     location: "A really good day",
-    sent: "Today, 5:45 PM",
+
     message: `Thank you, Fahim and Eathen, for joining me today. I genuinely had a really fun and amazing time with both of you.
 
 Fahim, you’ve honestly been an inspiration to me, especially when it comes to taking better care of myself and improving my appearance. Seeing how much effort you put into yourself made me want to do the same and become better with my own look and self-care.
@@ -87,7 +87,7 @@ I’m genuinely glad you both came today. It was a really good day, and I’m ha
     role: "The good-vibes crew",
     initials: "J+3",
     location: "Good memories, always",
-    sent: "Today, 5:37 PM",
+
     message: `You guys are always in such a fun mood. You genuinely know how to make everything more funny and enjoyable. No matter how low the vibe is, you guys always manage to bring some stupid joke or something funny that makes everyone feel better.
 
 Every time I’m with you guys, it’s just good vibes, random shit, and good memories. I honestly can’t remember many bad times with you guys, only the good ones.
@@ -107,7 +107,7 @@ But regardless, we had a lot of fun today. Thank you guys for being such great f
     role: "A thoughtful friend",
     initials: "TZ",
     location: "A day worth remembering",
-    sent: "Today, 5:18 PM",
+
     message: `Thank you so much, Tanaz. I don’t know you that much, but I do know that you’re a good kid. Thank you so much for planning all the stuff. Love you, kid <3.
 
 Thank you for this day.`,
@@ -168,9 +168,26 @@ function MessageIcon() {
   );
 }
 
+function formatCurrentDate(date: Date) {
+  return new Intl.DateTimeFormat(undefined, {
+    dateStyle: "medium",
+    timeStyle: "short",
+  }).format(date);
+}
+
 export default function Home() {
   const [selectedId, setSelectedId] = useState(people[0].id);
+  const [currentTime, setCurrentTime] = useState<Date | null>(null);
   const selectedPerson = people.find((person) => person.id === selectedId) ?? people[0];
+
+  useEffect(() => {
+    const updateTime = () => setCurrentTime(new Date());
+
+    updateTime();
+    const interval = window.setInterval(updateTime, 60_000);
+
+    return () => window.clearInterval(interval);
+  }, []);
 
   return (
     <main className="relative min-h-screen overflow-hidden bg-slate-50">
@@ -308,7 +325,9 @@ export default function Home() {
                 <div className="flex flex-col gap-5 border-t border-white/10 pt-5 sm:flex-row sm:items-end sm:justify-between">
                   <div>
                     <p className="text-xs text-slate-500">To {selectedPerson.name}</p>
-                    <p className="mt-1 text-sm font-semibold text-slate-300">{selectedPerson.sent}</p>
+                    <time className="mt-1 block text-sm font-semibold text-slate-300" dateTime={currentTime?.toISOString()}>
+                      {currentTime ? formatCurrentDate(currentTime) : "Loading current time…"}
+                    </time>
                   </div>
                   <div className="flex items-center gap-2 text-xs font-semibold text-slate-500">
                     <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" />
