@@ -188,12 +188,12 @@ export default function Home() {
             <h1 className="font-serif text-5xl font-bold leading-[0.98] tracking-[-0.04em] text-slate-900 sm:text-6xl lg:text-7xl">
               Words worth
               <span className="relative ml-3 inline-block text-slate-500">
-                keeping.
+                sending.
                 <span className="absolute -bottom-1 left-0 h-2 w-full -rotate-2 rounded-full bg-amber-300/70" />
               </span>
             </h1>
             <p className="mt-6 max-w-lg text-base leading-7 text-slate-600 sm:text-lg">
-              A quiet place for the messages that make an ordinary day feel a little more like yours.
+              Choose someone and send them the words you’ve been meaning to say.
             </p>
           </div>
 
@@ -201,8 +201,8 @@ export default function Home() {
             <aside className="rounded-[2rem] border border-slate-200/90 bg-white/75 p-3 shadow-soft backdrop-blur-sm lg:p-4">
               <div className="mb-3 flex items-end justify-between px-2 pt-1 lg:mb-4">
                 <div>
-                  <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-slate-400">Your people</p>
-                  <p className="mt-1 text-sm font-semibold text-slate-700">{people.length} notes waiting</p>
+                  <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-slate-400">Recipients</p>
+                  <p className="mt-1 text-sm font-semibold text-slate-700">{people.length} messages ready</p>
                 </div>
                 <span className="rounded-full bg-slate-100 px-2 py-1 text-[11px] font-bold text-slate-500">{people.length}</span>
               </div>
@@ -240,7 +240,7 @@ export default function Home() {
 
               <div className="mt-4 hidden border-t border-slate-100 px-2 pt-4 lg:block">
                 <p className="text-xs leading-5 text-slate-400">
-                  Pick a name whenever you need a small reminder of what matters.
+                  Pick someone to send your message to.
                 </p>
               </div>
             </aside>
@@ -260,25 +260,25 @@ export default function Home() {
                       {selectedPerson.initials}
                     </div>
                     <div>
-                      <p className="text-sm font-bold text-white">A note from {selectedPerson.name}</p>
+                      <p className="text-sm font-bold text-white">A message for {selectedPerson.name}</p>
                       <p className="mt-1 text-xs text-slate-400">{selectedPerson.location}</p>
                     </div>
                   </div>
                   <span className={`hidden rounded-full border px-3 py-1.5 text-[10px] font-bold uppercase tracking-[0.16em] sm:inline-flex ${selectedPerson.accent.badge}`}>
-                    For you
+                    For them
                   </span>
                 </div>
 
                 <div className="my-10 sm:my-12">
                   <div className="mb-6 flex items-center gap-2 text-xs font-bold uppercase tracking-[0.18em] text-slate-500">
                     <MessageIcon />
-                    Personal note
+                    Your message
                   </div>
                   <div className="relative max-w-3xl">
                     <span className="absolute -left-3 -top-7 font-serif text-7xl leading-none text-amber-300/80 sm:-left-5 sm:-top-9 sm:text-8xl" aria-hidden="true">
                       “
                     </span>
-                    <p className="sr-only">Message from {selectedPerson.name}</p>
+                    <p className="sr-only">Message for {selectedPerson.name}</p>
                     <blockquote className="animate-message-in whitespace-pre-line font-serif text-[2rem] font-medium leading-[1.14] tracking-[-0.035em] text-slate-100 sm:text-4xl lg:text-[2.75rem]" key={selectedPerson.id}>
                       {selectedPerson.message}
                     </blockquote>
@@ -287,12 +287,12 @@ export default function Home() {
 
                 <div className="flex flex-col gap-5 border-t border-white/10 pt-5 sm:flex-row sm:items-end sm:justify-between">
                   <div>
-                    <p className="text-xs text-slate-500">Sent by {selectedPerson.name}</p>
+                    <p className="text-xs text-slate-500">To {selectedPerson.name}</p>
                     <p className="mt-1 text-sm font-semibold text-slate-300">{selectedPerson.sent}</p>
                   </div>
                   <div className="flex items-center gap-2 text-xs font-semibold text-slate-500">
                     <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" />
-                    Keep this close
+Sent with care
                     <ArrowUpRightIcon />
                   </div>
                 </div>
@@ -302,7 +302,7 @@ export default function Home() {
         </section>
 
         <footer className="flex flex-col gap-2 border-t border-slate-200/80 py-5 text-xs text-slate-400 sm:flex-row sm:items-center sm:justify-between">
-          <p>Made for the moments you want to remember.</p>
+          <p>Made for the things you want to say.</p>
           <p className="font-medium text-slate-500">dearly / 01</p>
         </footer>
       </div>
