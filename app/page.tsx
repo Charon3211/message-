@@ -62,6 +62,26 @@ Thank you for always being there for me, and Noshin, thank you for supporting me
     },
   },
   {
+    id: "fahim-eathen",
+    name: "Fahim & Eathen",
+    role: "Friends who inspire you",
+    initials: "F&E",
+    location: "A really good day",
+    sent: "Today, 5:45 PM",
+    message: `Thank you, Fahim and Eathen, for joining me today. I genuinely had a really fun and amazing time with both of you.
+
+Fahim, you’ve honestly been an inspiration to me, especially when it comes to taking better care of myself and improving my appearance. Seeing how much effort you put into yourself made me want to do the same and become better with my own look and self-care.
+
+And Eathen, you’re calm, gentle, and honestly mostly an idiot, but that’s what makes you you. Thank you for coming today. I really enjoyed spending time with you, and I hope someday I can do the same for you. You also made me realize how important self-care actually is and that sometimes you just need to take some time for yourself.
+
+I’m genuinely glad you both came today. It was a really good day, and I’m happy I got to spend it with you guys.`,
+    accent: {
+      avatar: "bg-indigo-100 text-indigo-700",
+      badge: "border-indigo-200 bg-indigo-50 text-indigo-700",
+      dot: "bg-indigo-400",
+    },
+  },
+  {
     id: "jahin-tauhid-muktho-ornob",
     name: "Jahin, Tauhid, Muktho & Ornob",
     role: "The good-vibes crew",
